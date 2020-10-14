@@ -1,0 +1,21 @@
+CS488 assignment 4
+
+Compilation:
+normal premake4/make within current directory (A3)
+assignment completed on linux student environment (MC 3007)
+
+Manual:
+A4_Render calls traceColor for each image pixel
+traceColor calls rayInterceptScene on the scene root node which checks for intersection on itself
+	and recursively for its children
+The primatives subclasses do the heavy lifting for individual ray collision
+	and the GeometryNode does some validity checking on the primitive's result.
+
+screenshot.png contains the render from sample.lua "Cows staring into the abyss"
+
+Extention:
+The traceColor function is modified to accept a reflectDepth value.
+On each call traceColor will "modify" the perceived color by reflecting another ray off the intercepted surface and combining the two found colours.
+(this continues recursively for a set dept)
+The colours are combined as a fraction of the material shininess
+(perhaps a seperate reflectiveness value should be added to the materials, but shininess and reflectiveness are closely related)
